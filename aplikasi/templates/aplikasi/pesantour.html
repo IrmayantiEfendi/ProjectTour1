@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/static/vendors/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#kota').change(function(){
+			if ($('#kota').val() > '0' ){
+				$(document).ready(function(result) {
+					//alert($('#kota').val());
+
+						$('#paket').html('<option>--Pilih Paket--</option>{% for d in reservasi%} <option> {{ d.code_paket }} </option> {% endfor %}')
+						})
+			}else {
+				$('#paket').html('<option value="">--Pilih Paket--</option>')
+			}
+		});	
+	});
+</script>
+	<title>Reservasi Tour</title>
+</head>
+<body>
+<ul>
+	<form>
+		<label>Nama Pemesan <input type="text" name="nama" id="nama" placeholder="Silakan isi nama anda"></label>
+	</form>
+	<ul id="uji"></ul>
+	<table border="0">
+		<tr>
+			<td>
+				<select id="kota">
+					<option value="0">--Pilih Kota Tujuan--</option>
+					{%for r in destinasi%}
+					<option value="{{ r.id }}">{{ r.Tempat }}</option>
+					{%endfor%}
+				</select>
+			</td>
+			<td>
+				<select id="paket">
+					<option value="">--Pilih Paket--</option>
+			
+
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<form id="pax">
+					<input type="text" name="pax" id="pax" placeholder="Jumlah Orang">
+				</form>
+			</td>
+			<td>
+				<form id="harga">
+					<input type="text" name="harga" id="harga" placeholder="Harga">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<form id="berangkat">
+					<input type="text" name="berangkat" id="berangkat" placeholder="Waktu berangkat">
+				</form>
+			</td>
+			<td>
+				<form id="pulang">
+					<input type="text" name="berangkat" id="berangkat" placeholder="Waktu pulang">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td colspan='2' align="center">
+				<form id="total">
+					<input type="text" name="berangkat" id="berangkat" placeholder="Total">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" name="pesan" value="PESAN">
+			</td>
+		</tr>
+	</table>
+
+</ul>
+</body>
+</html>

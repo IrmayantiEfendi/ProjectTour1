@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/static/vendors/js/jquery/jquery-1.7.2.min.js"></script>
+<!--<script src="/static/vendors/datetimepicker/uxsolutions-bootstrap-datepicker-d27f510/dist/js/bootstrap-datepicker.js"></script>-->
+<script type="text/javascript">
+	$(function(){
+		var brandOptions;
+		var modelOptions;
+		var a = 1500000 ; 
+		var b = 1250000 ; 
+		var a2 = 1200000;
+		var b2 = 1000000;
+         /** $(document).ready(function(result){  
+            brandOptions="<option> pilih </option>";
+            $('#tampil').html(brandOptions);
+       //menampilkan data ke html
+     }); */
+       /**   $('#pilih').change(function() {
+     	if ($(this).val() == 'satu') {
+          		$(document).ready(function(result) {
+          			alert('nothing');
+          			brandOptions ="<input type='text' placeholder='Haihai' value='Haihai' disabled=true>";
+          			$('#Nu').html(brandOptions);
+          		});
+          	}
+          });*/
+          $('#dewasa').change(function() {
+          	var c = ($(this).val());
+          	if ($(this).val() > 2) {
+          		$(document).ready(function(result){
+          			$('#Harga').html("<input type='text' name='harga' id='harga' value="+c * b+" disabled=true>");
+          		});
+          	}else if ($(this).val() == 0) {
+          			$('#Harga').html("<input type='text' id='Harga' value='Rp.0' disabled=true>");
+          	}
+          	else{
+          		
+					$('#Harga').html("<input type='text' id='Harga' value="+c * a+" disabled=true>");
+          	}
+          });
+          $('#anak-anak').change(function(){
+          	var c2 = ($(this).val());
+
+          	if ($(this).val() > 3) {
+          		$('#HargaAnak').html("<input type='text' id='hargaanak' value="+b2 * c2+" disabled=true >")
+          	}else if ($(this).val() == 0) {
+          		$('#HargaAnak').html("<input type='text' id='hargaanak' value='0' disabled=true >")
+          	}else{
+          		$('#HargaAnak').html("<input type='text' id='hargaanak' value="+a2 * c2+" disabled=true >")
+          	}
+          });
+          
+	});		
+	
+</script>
+	<title>INDEX</title>
+</head>
+<body>
+								<!--	CONTOH MEMBUAT AUTO 
+								<form action="" method="get" accept-charset="utf-8">
+										<select name="pilih" id="pilih">
+											<option>Pilih</option>
+											<option value="satu">Satu</option>
+										</select>
+										<select name="tampil" id="tampil">
+											
+										</select>
+
+										</form>
+										<form id="Nu" >
+											
+										</form>
+										<ul name="U" id="U">
+											<li></li>
+										</ul> -->
+<ul>
+	<table>
+		<tbody>
+			<td>
+				<form method="" action="">
+					<select name="berangkat" id="berangkat">
+						<option>Berangkat dari</option>
+						{% for b in destinasi %}
+						<option value="{{ b.id }}">{{ b.Tempat }}</option>
+						{% endfor %}
+					</select>
+					
+					<select name="tujuan" id="tujuan">
+						<option>Tujuan</option>
+						{% for b in destinasi %}
+						<option value="{{ b.id }}">{{ b.Tempat }}</option>
+						{% endfor %}
+					</select>
+				</form>
+			</td>
+			<tr>
+			<td>
+				<form method="" action="">
+					<input type="text" name="tgl" id="tgl" class="tgl" placeholder="Waktu Berangkat">
+					
+					<table>
+						<tr>
+							<td> <input type="radio" name="pilih" value="berangkat" checked>Sekali Berangkat</td><br/>  
+						</tr>
+						<tr>
+							<td><input type="radio" name="pilih" value="kembali">Kembali </td><br/> 
+						</tr>
+					</table>					
+							<input type="text" name="tgl2" id="tgl2" placeholder="Waktu Kembali"> 
+				</form>
+			</td>
+			</tr>
+			<tr>
+				<table border="1">
+					<tr>
+					
+						<th>Dewasa (18+)</th>
+						<th>Anak-Anak(0-17)</th>
+						<th>Kelas</th>
+						<th>Total</th>
+					
+					</tr>
+					<tr>
+						<td><select id="dewasa">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+						</select></td>
+						<td><select id="anak-anak">
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+						</select></td>
+						<td>
+							<select id="" ="kelas">
+								<option value="Ekonomi">Ekonomi</option>
+								<option value="Bisnis">Bisnis</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td >
+							<form id="Harga">
+								<input type="text" name="harga" value="Harga" disabled="true">
+							</form>
+						</td>
+						<td>
+							<form id="HargaAnak">
+								<input type="text" name="harga" value="Harga" disabled="true">
+							</form>
+						</td>
+						<td>
+							<form id="Kelas">
+								<input type="text" name="harga" value="Harga" disabled="true">
+							</form>
+						</td>
+						<td>
+							<form id="total">
+								<input type="text" name="harga" value="Harga" disabled="true">
+							</form>
+						</td>
+					</tr>
+				</table>
+				
+		</tbody>
+		<input type="submit" name="search" value="SEARCH FLIGHTS">
+	</table>
+	
+</ul>
+	
+</body>
+</html>
